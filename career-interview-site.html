@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers Launched 🚀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f0f23;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.3), transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.2), transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px 20px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #a0a0c0;
+            font-weight: 400;
+        }
+
+        .emoji-float {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto 35px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 18px 25px 18px 55px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            font-size: 1.05em;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: white;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .search-input:focus {
+            border-color: #667eea;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.3em;
+        }
+
+        .filters {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .video-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(236, 72, 153, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-card:hover::before {
+            opacity: 1;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            top: -50%;
+            left: -50%;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .play-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #667eea;
+            transition: all 0.3s ease;
+            z-index: 1;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-card:hover .play-icon {
+            transform: scale(1.15);
+            background: white;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-info {
+            padding: 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .career-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(102, 126, 234, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-bottom: 12px;
+            color: #a0c4ff;
+            font-weight: 700;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .video-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+            line-height: 1.3;
+        }
+
+        .video-description {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(20, 20, 40, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            backdrop-filter: blur(20px);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .video-player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .video-player iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .modal-info {
+            padding: 35px;
+        }
+
+        .modal-title {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .modal-description {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 1.1em;
+            color: white;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                border-radius: 20px;
+            }
+
+            .modal-info {
+                padding: 25px;
+            }
+        }
+
+        .no-results {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 80px 20px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .no-results h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .no-results p {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Careers Launched <span class="emoji-float">🚀</span></h1>
+            <p class="subtitle">Real people, real careers, real talk</p>
+        </header>
+
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search for your dream career...">
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-category="all">✨ All</button>
+            <button class="filter-btn" data-category="tech">💻 Tech</button>
+            <button class="filter-btn" data-category="healthcare">🏥 Healthcare</button>
+            <button class="filter-btn" data-category="business">📊 Business</button>
+            <button class="filter-btn" data-category="creative">🎨 Creative</button>
+            <button class="filter-btn" data-category="education">📚 Education</button>
+        </div>
+
+        <div class="video-grid" id="videoGrid"></div>
+    </div>
+
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="video-player" id="videoPlayer"></div>
+            <div class="modal-info">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <span class="career-tag" id="modalTag"></span>
+                <p class="modal-description" id="modalDescription"></p>
+                <div class="stats" id="modalStats"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const videos = [
+            {
+                id: 1,
+                title: "Day in the Life: Software Engineer at a Startup",
+                category: "tech",
+                emoji: "💻",
+                description: "Sarah codes apps that millions use daily. From debugging at 9am to launching features by 5pm—see what coding IRL actually looks like.",
+                fullDescription: "Ever wondered what software engineers ACTUALLY do all day? Sarah breaks it down—from morning standups with her team to solving real coding problems. She shares the truth about learning to code, dealing with bugs, and what it's like building apps people actually use. Spoiler: it's way more creative than you think! 🎯",
+                youtubeId: "dQw4w9WgXcQ",
+                duration: "12:34",
+                views: "45K"
+            },
+            {
+                id: 2,
+                title: "ER Nurse: Real Stories from the Emergency Room",
+                category: "healthcare",
+                emoji: "🏥",
+                description: "Marcus shares what it's really like saving lives in the ER—the intense moments, the wins, and why he'd never choose another career.",
+                fullDescription: "Think medical shows are realistic? Marcus takes you behind the scenes of actual emergency medicine. He talks about the rush of helping people in crisis, how he stays calm under pressure, and the awesome feeling when someone you helped walks out healthy. Warning: may inspire you to become a healthcare hero! 🦸‍♂️",
+                youtubeId: "dQw4w9WgXcQ",
+                duration: "15:22",
+                views: "38K"
+            },
+            {
+                id: 3,
+                title: "How I Became a Marketing Director by 28",
+                category: "business",
+                emoji: "📊",
+                description: "Elena went from intern to director in 6 years. She spills the tea on creating viral campaigns and building her dream career.",
+                fullDescription: "Elena breaks down her journey from coffee-fetching intern to leading major brand campaigns. She shares the strategy behind viral marketing (yes, including TikTok), how she pitched her way to promotions, and why marketing is basically psychology + creativity. Plus, she reveals the skills that actually matter vs. what college taught her. 💡",
+                youtubeId: "dQw4w9WgXcQ",
+                duration: "18:45",
+                views: "62K"
+            },
+            {
+                id: 4,
+                title: "Graphic Designer: From Side Hustle to Full-Time",
+                category: "creative",
+                emoji: "🎨",
+                description: "James started designing logos for friends. Now brands pay him to create their entire visual identity. Here's how he did it.",
+                fullDescription: "James proves you don't need a fancy degree to make it as a designer. He walks through his creative process, shows his actual design tools, and explains how he finds clients. He also gets real about the challenges—dealing with picky clients, creative blocks, and imposter syndrome. If you love art and making things look amazing, this one's for you! ✨",
+                youtubeId: "dQw4w9WgXcQ",
+                duration: "14:12",
+                views: "29K"
+            },
+            {
+                id: 5,
+                title: "High School Teacher: Why I Love This Job",
+                category: "education",
+                emoji: "📚",
+                description: "Amanda teaches history and makes it actually interesting. She shares the real challenges and incredible rewards of shaping young minds.",
+                fullDescription: "Amanda keeps it 100% real about teaching—the good, the challenging, and the moments that make it all worth it. She talks about connecting with students, making lessons engaging (no boring lectures here!), and watching kids have those 'aha!' moments. Plus, she addresses the elephant in the room: yes, the pay could be better, but here's why she stays. 🎓",
+                youtubeId: "dQw4w9WgXcQ",
+                duration: "13:28",
+                views: "41K"
+            },
+            {
+                id: 6,
+                title: "Data Scientist: AI, Machine Learning & the Future",
+                category: "tech",
+                emoji: "🤖",
+                description: "Raj works with AI and machine learning. He explains what data scientists actually do and why this field is exploding right now.",
+                fullDescription: "Raj breaks down data science in a way that actually makes sense. No boring jargon—just straight talk about working with AI, building algorithms, and using data to predict trends. He shares his path from math nerd to tech professional and why this is one of the hottest careers right now. If you're curious about AI and the future of tech, watch this! 🔮",
+                youtubeId: "dQw4w9WgXcQ",
+                duration: "16:54",
+                views: "58K"
+            },
+            {
+                id: 7,
+                title: "Physical Therapist: Helping People Move & Heal",
+                category: "healthcare",
+                emoji: "💪",
+                description: "Dr. Chen helps athletes recover from injuries and older adults stay active. See what a day of changing lives looks like.",
+                fullDescription: "Dr. Chen shows the incredible impact of physical therapy—from helping athletes get back in the game to helping people walk again after surgery. She explains the science behind recovery, shares amazing patient transformation stories, and talks about the different places PTs work (hospitals, sports teams, private practice). Great career if you love movement, science, and seeing real results! 🏃‍♀️",
+                youtubeId: "dQw4w9WgXcQ",
+                duration: "11:47",
+                views: "34K"
+            },
+            {
+                id: 8,
+                title: "Entrepreneur: I Built My Own Company",
+                category: "business",
+                emoji: "🚀",
+                description: "Tom shares the unfiltered truth about starting a business—the failures, the wins, and the lessons that changed everything.",
+                fullDescription: "Tom's story is wild. He failed twice before his company took off. He talks about raising money, building a team, dealing with competition, and the mental game of entrepreneurship. No sugar-coating here—he shares the sleepless nights AND the victories. Whether you want to start a business or just understand what it takes, this is gold. 💰",
+                youtubeId: "dQw4w9WgXcQ",
+                duration: "20:15",
+                views: "73K"
+            },
+            {
+                id: 9,
+                title: "Film Editor: Creating Movie Magic",
+                category: "creative",
+                emoji: "🎬",
+                description: "Maya shows how editors shape the stories you watch. Turns out, the edit room is where movies are really made.",
+                fullDescription: "Maya pulls back the curtain on film editing. She shows actual footage and how she transforms it into emotional, compelling scenes. She explains the software, the creative decisions, and how editors work with directors to tell better stories. If you binge Netflix and love movies, you'll love seeing how the magic happens. 🎥",
+                youtubeId: "dQw4w9WgXcQ",
+                duration: "17:33",
+                views: "52K"
+            }
+        ];
+
+        let currentFilter = 'all';
+        let searchQuery = '';
+
+        function renderVideos(filter = 'all', search = '') {
+            const grid = document.getElementById('videoGrid');
+            let filteredVideos = filter === 'all' 
+                ? videos 
+                : videos.filter(v => v.category === filter);
+            
+            if (search) {
+                const searchLower = search.toLowerCase();
+                filteredVideos = filteredVideos.filter(v => 
+                    v.title.toLowerCase().includes(searchLower) ||
+                    v.description.toLowerCase().includes(searchLower) ||
+                    v.category.toLowerCase().includes(searchLower) ||
+                    v.fullDescription.toLowerCase().includes(searchLower)
+                );
+            }
+            
+            if (filteredVideos.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <h2>No videos found 😕</h2>
+                        <p>Try a different search or check out all categories</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = filteredVideos.map(video => `
+                <div class="video-card" onclick="openModal(${video.id})">
+                    <div class="video-thumbnail">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <span class="career-tag">${video.emoji} ${video.category.charAt(0).toUpperCase() + video.category.slice(1)}</span>
+                        <h3 class="video-title">${video.title}</h3>
+                        <p class="video-description">${video.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openModal(videoId) {
+            const video = videos.find(v => v.id === videoId);
+            const modal = document.getElementById('videoModal');
+            const videoPlayer = document.getElementById('videoPlayer');
+            
+            videoPlayer.innerHTML = `
+                <iframe 
+                    src="https://www.youtube.com/embed/${video.youtubeId}?autoplay=1" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            `;
+            
+            document.getElementById('modalTitle').textContent = video.title;
+            document.getElementById('modalTag').innerHTML = `${video.emoji} ${video.category.charAt(0).toUpperCase() + video.category.slice(1)}`;
+            document.getElementById('modalDescription').textContent = video.fullDescription;
+            
+            document.getElementById('modalStats').innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-label">Duration</div>
+                    <div class="stat-value">${video.duration}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Views</div>
+                    <div class="stat-value">${video.views}</div>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const videoPlayer = document.getElementById('videoPlayer');
+            
+            videoPlayer.innerHTML = '';
+            
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderVideos(currentFilter, searchQuery);
+        });
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.category;
+                renderVideos(currentFilter, searchQuery);
+            });
+        });
+
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('videoModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        renderVideos();
+    </script>
+</body>
+</html>
