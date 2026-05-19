@@ -579,6 +579,13 @@ h2 {
   margin-top: 8px;
 }
 
+.contact-line {
+  margin-top: 14px;
+  color: var(--blue-dark);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
 .site-footer {
   display: flex;
   flex-wrap: wrap;
