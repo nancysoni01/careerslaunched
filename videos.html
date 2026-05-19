@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CareersLaunched | Videos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="CareersLaunched home">
+        <img class="brand-logo" src="assets/careerslaunched-logo.png" alt="">
+        <span>CareersLaunched</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a class="active" href="videos.html">Videos</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="page-intro">
+        <p class="eyebrow">Career interviews</p>
+        <h1>Hear what different careers actually look like.</h1>
+        <p>Browse interviews by field and learn how people got started, what their work is like, and what students should know before choosing a path.</p>
+      </section>
+
+      <section class="video-controls" aria-label="Video categories">
+        <button class="filter-button active" type="button" data-filter="all">All</button>
+        <button class="filter-button" type="button" data-filter="technology">Technology</button>
+        <button class="filter-button" type="button" data-filter="entrepreneurship">Entrepreneurship</button>
+        <button class="filter-button" type="button" data-filter="finance">Finance</button>
+        <button class="filter-button" type="button" data-filter="stem">STEM</button>
+        <button class="filter-button" type="button" data-filter="healthcare">Healthcare</button>
+        <button class="filter-button" type="button" data-filter="education">Education</button>
+        <button class="filter-button" type="button" data-filter="creative-media">Creative &amp; Media</button>
+      </section>
+
+      <section class="video-grid" aria-live="polite">
+        <article class="video-card" data-category="technology">
+          <video class="video-player" controls preload="metadata">
+            <source src="assets/videos/jenni-huang-technology-interview-trimmed.mov">
+            Your browser does not support the video tag.
+          </video>
+          <h2>Day in the Life: Recruiter at Nvidia</h2>
+          <p>Jenni Huang shares what it is like to work as a recruiter at Nvidia, including how she supports hiring teams, connects with candidates, and what students should know about building a career in technology.</p>
+          <a href="assets/videos/jenni-huang-technology-interview-trimmed.mov">Open video file</a>
+        </article>
+        <article class="video-card" data-category="entrepreneurship">
+          <video class="video-player" controls preload="metadata">
+            <source src="assets/videos/kyla-brennan-interview-trimmed.mov">
+            Your browser does not support the video tag.
+          </video>
+          <h2>Day in the Life: Entrepreneur and Business Owner</h2>
+          <p>Kyla Brennan shares what it is like to run and grow a business, including how she makes decisions, handles uncertainty, and turns ideas into real work. The interview gives students a closer look at entrepreneurship beyond the polished final product.</p>
+          <a href="assets/videos/kyla-brennan-interview-trimmed.mov">Open video file</a>
+        </article>
+        <article class="video-card" data-category="finance">
+          <video class="video-player" controls preload="metadata">
+            <source src="assets/videos/kayla-dean-finance-interview-trimmed.mov">
+            Your browser does not support the video tag.
+          </video>
+          <h2>Day in the Life: Finance Professional</h2>
+          <p>Kayla Dean shares what it is like to work in finance, including the skills the field requires, how she thinks about career growth, and what students should know when exploring money-related careers.</p>
+          <a href="assets/videos/kayla-dean-finance-interview-trimmed.mov">Open video file</a>
+        </article>
+        <article class="video-card" data-category="stem">
+          <div class="video-thumb stem">STEM</div>
+          <h2>Interview: science, engineering, and research</h2>
+          <p>Stories from people working in technical fields, labs, engineering teams, and problem-solving roles.</p>
+          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">Watch video</a>
+        </article>
+        <article class="video-card" data-category="healthcare">
+          <div class="video-thumb healthcare">Care</div>
+          <h2>Interview: careers in healthcare</h2>
+          <p>Explore clinical, public health, therapy, medical research, and patient-support career paths.</p>
+          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">Watch video</a>
+        </article>
+        <article class="video-card" data-category="education">
+          <div class="video-thumb education">Teach</div>
+          <h2>Interview: working in education</h2>
+          <p>Conversations with people who teach, mentor, design learning programs, or support students.</p>
+          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">Watch video</a>
+        </article>
+        <article class="video-card" data-category="creative-media">
+          <div class="video-thumb creative-media">Media</div>
+          <h2>Interview: creative and media careers</h2>
+          <p>Hear from people in design, content, film, writing, marketing, social media, and creative strategy.</p>
+          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">Watch video</a>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>CareersLaunched</span>
+      <span>Interviews that help students see what different paths can look like.</span>
+    </footer>
+  </body>
+</html>
