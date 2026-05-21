@@ -9,7 +9,8 @@ filterButtons.forEach((button) => {
     button.classList.add("active");
 
     videoCards.forEach((card) => {
-      const shouldShow = filter === "all" || card.dataset.category === filter;
+      const categories = card.dataset.category.split(" ");
+      const shouldShow = filter === "all" || categories.includes(filter);
       card.classList.toggle("is-hidden", !shouldShow);
     });
   });
